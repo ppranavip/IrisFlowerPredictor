@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+
+        body{
+            background-image:  linear-gradient(rgba(4, 9, 10, 0.5), rgba(4, 9, 30, 0.5)),url("https://images.pexels.com/photos/6990972/pexels-photo-6990972.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+            background-position: center;
+            background-size: cover;
+            height: 100vh;
+            width: 100%;
+            font-family: Verdana, Geneva, Tahoma, sans-serif, 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .wrapper{
+            justify-content: center;
+            background-color: rgb(221, 235, 248);
+            padding: 0px 3rem 0px 3rem;
+            color: rgb(130, 62, 193);
+            border-radius: 5px;
+        }
+        .header{
+            margin: 2.5rem;
+            border: 2px solid rgb(130, 62, 193);
+            background-color: rgb(130, 62, 193);
+            color: rgb(255, 255, 255);
+            padding: 10px 50px ;
+            text-align: center;
+            font-weight: bolder;
+            font-size: x-large;
+        }
+        .form-div{
+            display: flex;
+            justify-self: center;
+        }
+        input{
+            padding: 1rem;
+            margin: 5px;
+            width: 25rem;
+            border: none;
+        }
+        #button{
+            padding: 10px;
+            background-color: rgb(130, 62, 193);
+            color: white;
+            border: none;
+            border-radius: 2px;
+            cursor: pointer;
+            margin: 1.5rem 0 2rem 0.3rem ;
+        }
+        #button:hover{
+            background-color: white;
+            color: rgb(130, 62, 193);
+            border: 2px solid rgb(130, 62, 193);
+        }
+        .result{
+            display: flex;
+            justify-content: space-between;
+        }
+        .output-div{
+            margin-bottom: 10px;
+        }
+    </style>
+    <title>Iris Flower Predictor</title>
+</head>
+<body>
+    
+
+    <div class="wrapper">
+        <div class="box">
+            <div class="header">
+                Iris Flower Predictor
+            </div>
+            <div class="form-div">
+                <div class="inputsdiv">
+                    <form action="{{ url_for('predict')}}" method="post">
+                        <label>Enter the Sepal Length: </label><br>
+                        <input type="text" name="Sepal_Length" placeholder="Sepal Length" required /><br>
+                        <label>Enter the Sepal Width: </label><br>
+                        <input type="text" name="Sepal_Width" placeholder="Sepal Width" required /><br>
+                        <label>Enter the Petal Length: </label><br>
+                        <input type="text" name="Petal_Length" placeholder="Petal Length" required /><br>
+                        <label>Enter the Petal Width: </label><br>
+                        <input type="text" name="Petal_Width" placeholder="Petal Width" required /><br>
+                        <div class="result">
+                            <div class="button"><button type="submit" class="button" id="button">Predict the class</button>
+                            </div>
+                            {% if prediction_text %}
+                            <h2> Class: {{ prediction_text }} </h2>
+                            {% endif %}
+                        
+    </form>
+    
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var button = document.createElement("button");
+        var output_div = document.getElementById("output-div");
+        function prediction(){
+            event.preventDefault();
+            // output_div.innerHTML = "<h1>" + prediction_text + "</h1>";
+        }
+    </script>
+</body>
+</html>
